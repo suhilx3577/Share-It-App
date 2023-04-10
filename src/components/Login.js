@@ -13,11 +13,13 @@ import logo from "../assets/logo.png";
 import shareVideo from "../assets/share.mp4";
 
 const Login = () => {
+  const navigate = useNavigate()
 
   const onSuccess = (response) =>{
-    localStorage.setItem('user',JSON.stringify(response.profileObj))
+
     const decodeHeader = jwt_decode(response.credential);
-    console.log(decodeHeader)
+    localStorage.setItem('user',JSON.stringify(decodeHeader))
+    
     const {name , sub, picture } = decodeHeader
 
     const doc = {
@@ -26,18 +28,17 @@ const Login = () => {
       userName:name,
       imageUrl:picture
     }
+
     client.createIfNotExists(doc)
     .then(()=>{
-      redirect('/',{replace:true})
+      return navigate("/",{replace:true})
     })
-
-
 
   }
 
 
   const onFailure = (response) =>{
-    console.log(response)
+    console.log('Failure')
   }
 
 

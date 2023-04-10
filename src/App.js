@@ -2,22 +2,16 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import About from "./components/About"
 import Login from "./components/Login"
+import Home from "./container/Home"
 import './index.css'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
-const App =() =>{
-    return(
-        <h1 className="text-2xl font-bold font-serif">
-            Hello Worlds
-        </h1>
-    )
-}
 
 const appRoutes = createBrowserRouter([
     {
         path:"/",
-        element:<App/>,
+        element:<Home/>,
     },
     {
         path:"/about",
@@ -26,6 +20,10 @@ const appRoutes = createBrowserRouter([
     {
         path:"/login",
         element:<Login/>
+    },
+    {
+        path:"*",
+        element:<Home/>
     }
 ])
 
