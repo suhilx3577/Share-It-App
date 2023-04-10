@@ -7,7 +7,6 @@ import { client } from '../client';
 import {userQuery} from '../utils/data'
 import logo from '../assets/logo.png'
 import Pins from './Pins';
-import { urlFor } from '../client';
 
 
 
@@ -68,7 +67,7 @@ const Home = () => {
       <div className='pb-2 flex-2 h-screen overflow-y-scroll' ref={scrollRef}>
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile/>}/>
-          <Route path="/user-profile/:userId" element={<Pins user={user && user}/>}/>
+          <Route path="/*" element={<Pins user={user && user}/>}/>
         </Routes>
       </div>
 

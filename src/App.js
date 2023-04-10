@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client"
 import About from "./components/About"
 import Login from "./components/Login"
 import Home from "./container/Home"
+import Pins from "./container/Pins"
 import './index.css'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -22,7 +23,7 @@ const appRoutes = createBrowserRouter([
         element:<Login/>
     },
     {
-        path:"*",
+        path:"/*",
         element:<Home/>
     }
 ])
