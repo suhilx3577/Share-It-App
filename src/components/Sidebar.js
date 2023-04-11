@@ -11,7 +11,7 @@ const Sidebar = ( user, closeToggle) => {
   const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize'
   const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-black transition-all duration-200 ease-in-out capitalize'
 
-  console.log(user?.user?.userName,'this is from sideBar')
+  // console.log(user?.user?.userName,'this is from sideBar')
 
   const handleCloseSidebar = () => {
     if(closeToggle) closeToggle(false);  

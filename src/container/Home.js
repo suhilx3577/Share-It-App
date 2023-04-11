@@ -30,8 +30,10 @@ const Home = () => {
     .then((data)=>{
       setUser(data[0]);
     })
+
   },[]);
-  
+
+  // console.log(user)
 
 
   return (

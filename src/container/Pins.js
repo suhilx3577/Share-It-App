@@ -1,5 +1,6 @@
-import React , {useState} from 'react'
+import React , {useEffect, useState} from 'react'
 import {Routes,Route} from 'react-router-dom'
+
 
 import {Navbar, Feed, Detail, CreatePin, Search} from "../components"
 
@@ -16,7 +17,7 @@ const Pins = (user) => {
       <div className='h-full'>
 
         <Routes>
-          <Route path="/" element={<Feed/>}/>
+          <Route path="/*" element={<Feed/>}/>
           <Route path="/category/:categoryId" element={<Feed/>}/>
           <Route path="/pin-detail/:pinId" element={<Detail user={user}/>}/>
           <Route path="/create-pin" element={<CreatePin user={user}/>}/>
