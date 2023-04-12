@@ -16,7 +16,7 @@ const Pin = ({pin}) => {
   const userInfo = fetchUser()
 
   const {_id ,destination , postedBy} = pin
-  console.log(postedBy)
+  // console.log(postedBy)
 
   const navigate = useNavigate()
   
@@ -56,14 +56,14 @@ const Pin = ({pin}) => {
   }
 
   return (
-    <div className='m-2 w-250 bg-gray-100 rounded-sm'>
+    <div className='m-2'>
       <div 
       onMouseEnter={()=> setPostHovered(true)}
       onMouseLeave={()=> setPostHovered(false)}
       onClick={()=>navigate(`/pin-detail/${_id}`)}
       className='relative curson-zoom-in w-auto hover:shadow-lg rounded-lg overflow-hidden transition-all duration-500 ease-in-out'
       >
-      <img className='rounded lg w-full ' alt='user-post' src={pin?.image?.asset?.url}/>
+      <img className='rounded lg w-full ' alt='user-post' src={(urlFor(pin?.image?.asset?.url).width(250).url())}/>
       {
         postHovered && (
           <div className='absolute top-0 w-full flex flex-col justify-between p-1 pr-2 pt-2 pb-2 z-50'

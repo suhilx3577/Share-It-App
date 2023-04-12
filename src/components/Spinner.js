@@ -1,7 +1,7 @@
 import React from "react";
 import {Circles} from "react-loader-spinner";
 
-const Spinner = () => {
+const Spinner = ({m}) => {
     const message='We are Adding New Ideas To your Feed'
   return (
     <div className="flex flex-col justify-center items-center w-full h-full">
@@ -14,7 +14,7 @@ const Spinner = () => {
         wrapperClass=""
         visible={true}
       />
-      <p className="text-lg text-center px-2">{message}</p>
+      <p className="text-lg text-center px-2">{m}</p>
     </div>
   );
 };
