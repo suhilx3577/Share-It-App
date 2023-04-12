@@ -15,40 +15,27 @@ const Feed = () => {
   const param = useParams()
   const {categoryId} = param
 
-  // if(loading) return <Spinner />
-
-  // useEffect=(()=>{
-  //   setLoading(true)
-
-  //   if(categoryId){
-  //     const query = searchQuery(categoryId);
-  //     client.fetch(query).then((data)=>{
-  //       setPins(data)
-  //       setLoading(false)
-  //     });
-  //   }
-  //   else{
-  //     client.fetch(feedQuery).then((data)=>{
-  //       setPins(data)
-  //       setLoading(false)
-  //     });
-  //   }
-
-  // },[categoryId]);
-
   useEffect(()=>{
-    client.fetch(feedQuery).then((data)=>{
-      setPins(data);
-    })
-    .catch(e=>{
-      console.log(e)
-    });
-
+    if(!categoryId){
+      client.fetch(feedQuery).then((data)=>{
+        setPins(data);
+      })
+      .catch(e=>{
+        console.log(e)
+      });
+    }
+    else{
+      const query = searchQuery('Testing1');
+      client.fetch(query).then((data)=>{
+        setPins(data)
+      });
+    }
   },[categoryId])
 
+  // console.log(pins)
 
   return (
-    <div>{pins==null? <Spinner/> : <MasonryLayout pins={pins}/>}</div>
+    <div>{pins?.length==0? <Spinner/> : <MasonryLayout pins={pins}/>}</div>
     // <div>Feed</div>
   )
 }

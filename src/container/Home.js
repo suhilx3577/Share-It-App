@@ -7,13 +7,14 @@ import { client } from '../client';
 import {userQuery} from '../utils/data'
 import logo from '../assets/logo.png'
 import Pins from './Pins';
+import { fetchUser } from '../utils/fetchUser';
 
 
 
 const Home = () => {
 
   const [toggleSideBar, setToggleSideBar] = useState(false)
-  const userInfo = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
+  const userInfo = fetchUser();
   const scrollRef = useRef(null)
 
 
@@ -33,7 +34,6 @@ const Home = () => {
 
   },[]);
 
-  // console.log(user)
 
 
   return (
@@ -66,7 +66,7 @@ const Home = () => {
 
       </div>
 
-      <div className='pb-2 flex-2 h-screen overflow-y-scroll' ref={scrollRef}>
+      <div className='pb-2 flex-1 h-screen overflow-y-scroll' ref={scrollRef}>
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile/>}/>
           <Route path="/*" element={<Pins user={user && user}/>}/>
