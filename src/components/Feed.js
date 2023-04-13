@@ -25,7 +25,7 @@ const Feed = () => {
       });
     }
     else{
-      const query = searchQuery('Testing1');
+      const query = searchQuery(categoryId);
       client.fetch(query).then((data)=>{
         setPins(data)
       });
@@ -35,7 +35,7 @@ const Feed = () => {
   // console.log(pins)
 
   return (
-    <div>{pins?.length==0? <Spinner/> : <MasonryLayout pins={pins}/>}</div>
+    <div>{pins?.length==0? <Spinner m={'No Pins In this Category. Be the First One to Upload'}/> : <MasonryLayout pins={pins}/>}</div>
     // <div>Feed</div>
   )
 }

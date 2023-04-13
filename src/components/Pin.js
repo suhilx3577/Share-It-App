@@ -101,7 +101,7 @@ const Pin = ({pin}) => {
                   savePin(_id);
                 }}
                 >
-                  {pin?.save?.length} {savedPost ? 'Saving' : 'Save'}
+                {savedPost ? 'Saving' : 'Save'}
                 </button>)
                 }
             </div>
@@ -140,7 +140,7 @@ const Pin = ({pin}) => {
       className="flex gap-2 mt-2 items-center"
       >
         <img
-        className='w-6 h-6 rounded-full'
+        className='w-6 h-6 rounded-full object-cover'
         src={postedBy?.imageUrl}
         alt='user-profile'
         />

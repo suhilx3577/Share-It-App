@@ -6,6 +6,7 @@ import {Navbar, Feed, Detail, CreatePin, Search} from "../components"
 
 const Pins = (user) => {
 
+
   const [search,setSearch] = useState('')
 
 

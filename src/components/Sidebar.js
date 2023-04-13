@@ -3,13 +3,15 @@ import { NavLink , Link } from 'react-router-dom'
 import {RiHomeFill} from 'react-icons/ri'
 import {IoIoArrowForward} from 'react-icons/io'
 
+import { categories } from '../utils/data'
+
 import logo from '../assets/logo.png'
 
 
 const Sidebar = ( user, closeToggle) => {
 
   const isNotActiveStyle = 'flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize'
-  const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-black transition-all duration-200 ease-in-out capitalize'
+  const isActiveStyle = 'flex items-center px-5 gap-3 font-extrabold border-r-2 border-black transition-all duration-200 ease-in-out capitalize'
 
   // console.log(user?.user?.userName,'this is from sideBar')
 
@@ -17,23 +19,6 @@ const Sidebar = ( user, closeToggle) => {
     if(closeToggle) closeToggle(false);  
   }
 
-  const categories = [
-    {
-      name:'Animals',
-    },
-    {
-      name:'Coding',
-    },
-    {
-      name:'Aesthetic',
-    },
-    {
-      name:'Happy-Vides',
-    },
-    {
-      name:'Happy-Vibes',
-    }
-  ]
 
 
   return (
@@ -44,7 +29,7 @@ const Sidebar = ( user, closeToggle) => {
         className='flex px-5 gap-2 pt-1 w-190 items-center mb-2'
         onClick={handleCloseSidebar}
         >
-          <img src={logo} alt="logo" className=''/>
+          <img src={logo} alt="logo" className='w-fill'/>
         </Link>
         <div className='flex flex-col gap-5'>
           <NavLink
@@ -58,13 +43,18 @@ const Sidebar = ( user, closeToggle) => {
           <h3 className='mt-2 px-5 text-base 2xl:text-xl'>Discover Catergories</h3>
           {
             categories.slice(0,categories.length-1).map((category)=>(
+              <>
+              
               <NavLink
               onClick={handleCloseSidebar}
               to={`/category/${category.name}`}
               className={({isActive})=> isActive ? isActiveStyle : isNotActiveStyle}
               key={category.name}>
-                {category.name}
+              <img src={category?.image} alt="category"
+              className='w-8 h-8 rounded-full shadow-sm' />
+              {category.name}
               </NavLink>
+              </>
             ))
           }
         </div>

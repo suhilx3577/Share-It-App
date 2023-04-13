@@ -1,6 +1,6 @@
-import React from 'react'
-import Mansonry from 'react-masonry-css'
-import Pin from './Pin'
+import React from 'react';
+import Mansonry from 'react-masonry-css';
+import Pin from './Pin';
 
 const breakpointObj = {
   default:4,
@@ -21,4 +21,4 @@ const MasonryLayout = ({pins}) => {
   )
 }
 
-export default MasonryLayout
+export default MasonryLayout;

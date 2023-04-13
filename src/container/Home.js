@@ -23,8 +23,7 @@ const Home = () => {
   useEffect(()=>{
     scrollRef.current.scrollTo(0,0)
   }, [])
-
-
+  
   useEffect(()=>{
     const query = userQuery(userInfo?.sub);
     client.fetch(query)
