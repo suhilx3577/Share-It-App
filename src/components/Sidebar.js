@@ -5,7 +5,7 @@ import {IoIoArrowForward} from 'react-icons/io'
 
 import { categories } from '../utils/data'
 
-import logo from '../assets/logo.png'
+import logo from '../../public/logo.png'
 
 
 const Sidebar = ( user, closeToggle) => {

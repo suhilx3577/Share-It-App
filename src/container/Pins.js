@@ -2,11 +2,10 @@ import React , {useEffect, useState} from 'react'
 import {Routes,Route} from 'react-router-dom'
 
 
-import {Navbar, Feed, Detail, CreatePin, Search} from "../components"
+import {Navbar, Feed, Detail, CreatePin} from "../components"
+import Search from '../components/Search'
 
 const Pins = (user) => {
-
-
   const [search,setSearch] = useState('')
 
 

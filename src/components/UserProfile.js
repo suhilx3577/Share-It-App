@@ -8,6 +8,7 @@ import { userQuery, userCreatedPinQ, userSavedPinQ } from '../utils/data'
 import {client, urlFor} from '../client'
 import MasonryLayout from './MasonryLayout'
 import Spinner from './Spinner'
+import { urlFor } from '../client'
 
 
 const UserProfile = () => {
@@ -27,7 +28,7 @@ const UserProfile = () => {
   const navigate = useNavigate();
   
   const {userId} = useParams();
-  console.log(userId)
+  // console.log(userId)
   
   useEffect(() => {
     const query = userQuery(userId);
@@ -70,6 +71,7 @@ const UserProfile = () => {
     return <Spinner m={'Loading Profile'}/>
   }
 
+  console.log(user,'user-profile')
   return (
       <div className="relative pb-2 h-full justify-center items-center">
         <div className='flex flex-col pb-5'>

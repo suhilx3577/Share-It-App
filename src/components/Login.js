@@ -9,8 +9,8 @@ import jwt_decode from "jwt-decode"
 
 import { client } from "../client"; 
 
-import logo from "../assets/logo.png";
-import shareVideo from "../assets/share.mp4";
+import logo from "../../public/logo.png";
+import shareVideo from "../../public/share.mp4";
 
 const Login = () => {
   const navigate = useNavigate()

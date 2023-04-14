@@ -1,6 +1,6 @@
 import React from 'react';
 import Mansonry from 'react-masonry-css';
-import Pin from './Pin';
+import Pin from '../components/Pin';
 
 const breakpointObj = {
   default:4,
@@ -11,8 +11,7 @@ const breakpointObj = {
   500:1,
 }
 
-const MasonryLayout = ({pins}) => {
-  console.log(pins,'masonry layout');
+const Mi = ({pins}) => {
   return (
     <Mansonry className='flex animate-slide-fwd' breakpointCols={breakpointObj}>
       {
@@ -22,4 +21,4 @@ const MasonryLayout = ({pins}) => {
   )
 }
 
-export default MasonryLayout;
+export default Mi;

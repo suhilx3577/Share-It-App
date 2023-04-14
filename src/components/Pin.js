@@ -20,7 +20,9 @@ const Pin = ({pin}) => {
 
   const navigate = useNavigate()
   
-  const isSaved = !!(pin?.save?.filter((item)=> item?.postedBy?._id === userInfo?.sub))?.length
+  let isSaved = pin?.save?.filter((item)=> item?.postedBy?._id === userInfo?.sub)
+
+  isSaved = isSaved?.length > 0 ? isSaved :[];
 
   const deletePin =(id) =>{
     return(
@@ -34,23 +36,23 @@ const Pin = ({pin}) => {
 
 
   const savePin =(id) => {
-    if(!isSaved){
+    if(isSaved?.length === 0){
       setSavedPost(true);
       client
-        .patch(id)
-        .setIfMissing({save:[]})
-        .insert('after','save[-1]',[{
-          _key:uuidv4(),
-          userId:userInfo?.sub,
-          postedBy:{
-            _type: 'postedBy',
-            _ref:userInfo?.sub
-          }
-        }])
+      .patch(id)
+      .setIfMissing({save:[]})
+      .insert('after','save[-1]',[{
+        _key:uuidv4(),
+        userId:userInfo?.sub,
+        postedBy:{
+          _type: 'postedBy',
+          _ref:userInfo?.sub
+        }
+      }])
       .commit()
       .then(()=>{
-        setSavedPost(true);
         window.location.reload();
+        setSavedPost(false);
       })
     }
   }
@@ -80,30 +82,22 @@ const Pin = ({pin}) => {
                   <MdDownloadForOffline/>
                 </a>
               </div>
-              {isSaved ? (
-                <button type='button'
-                onClick={(e)=>{
-                  e.stopPropagation();
-                  // alert('already Saved')
-                }}
-                className='h-7 flex items-center bg-red-500 opacity-70 hover:opacity-100 text-white rounded-3xl font-bold px-5 py-1 text-base hover:shadow-md outline-none'
-                >
+              {isSaved?.length !==0 ? ( 
+                <button type='button' className='bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none'>
                   {pin?.save?.length} Saved
-                  
-                </button>)
-                :
-                (<button
-                type='button'
-                className=' h-7 bg-red-500 opacity-70 hover:opacity-100 text-white rounded-3xl font-bold px-5 py-1 text-base hover:shadow-md outline-none'
+                </button>
+              ) : ( 
+                <button
                 onClick={(e)=>{
                   e.stopPropagation();
-                  setSavedPost(true)
-                  savePin(_id);
+                  savePin(_id)
                 }}
-                >
-                {savedPost ? 'Saving' : 'Save'}
-                </button>)
-                }
+                type="button"
+                className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none">
+                  {pin?.save?.length }  {savedPost ? 'Saving' : 'Save'}
+                </button>
+              )
+              }
             </div>
             <div className='flex justify-between items-center gap-2 w-full'
             >
@@ -119,7 +113,7 @@ const Pin = ({pin}) => {
                   {/* {destination.length>20 ? destination.slice(8,20) : destination.slice(5)} */}
                 </a>
               )}
-              {postedBy?._id === userInfo.sub &&(
+              {postedBy?._id === userInfo?.sub &&(
                 <button
                 className=' h-5 flex items-center bg-white p-2 opacity-70 hover:opacity-100 text-dark rounded-3xl font-bold px-5 py-1 text-base hover:shadow-md outline-none'
                 type="button"

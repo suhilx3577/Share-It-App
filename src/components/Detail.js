@@ -114,7 +114,7 @@ const Detail = ({user}) => {
           </p>
         </div>
         <Link 
-        to={`user-profile/${pinDetail.postedBy?._id}`}
+        to={`/user-profile/${pinDetail.postedBy?._id}`}
         className="flex gap-2 mt-5 items-center bg-white rounded-lg">
           <p className='h-6 w-6 hover:shadow-md flex items-center justify-center  rounded-full'><BiArrowFromLeft/></p>
           <img

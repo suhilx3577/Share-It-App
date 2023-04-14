@@ -2,9 +2,9 @@
   "name": "share-it",
   "version": "1.0.0",
   "description": "",
-  "main": "App.js",
   "scripts": {
-    "start": "npx parcel index.html",
+    "start": "npx parcel public/index.html",
+    "build": "parcel build public/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

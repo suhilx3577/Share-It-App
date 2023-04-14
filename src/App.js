@@ -1,34 +1,24 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-import About from "./components/About"
-import Login from "./components/Login"
-import Home from "./container/Home"
-import Pins from "./container/Pins"
-import './index.css'
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { Login } from './components';
+import Home from './container/Home';
 
+const App = () => {
+  const navigate = useNavigate();
 
-const appRoutes = createBrowserRouter([
-    {
-        path:"/",
-        element:<Home/>,
-    },
-    {
-        path:"/about",
-        element:<About/>
-    },
-    {
-        path:"/login",
-        element:<Login/>
-    },
-    {
-        path:"/*",
-        element:<Home/>
-    }
-])
+  useEffect(() => {
+    const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
 
+    if (!User) navigate('/login');
+  }, []);
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
+  return (
+    <Routes>
+      <Route path="login" element={<Login />} />
+      <Route path="/*" element={<Home />} />
+    </Routes>
+  );
+};
 
-root.render(<RouterProvider router={appRoutes}/>)
+export default App;
