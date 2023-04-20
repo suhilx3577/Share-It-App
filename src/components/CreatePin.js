@@ -18,7 +18,7 @@ const CreatePin = ({ user }) => {
   const [wrongImage, setWrongImage] = useState("");
 
   const uploadImage = (e) => {
-    console.log(e.target.files);
+    // console.log(e.target.files);
 
     const { type, name } = e.target.files[0];
     if (
@@ -49,8 +49,8 @@ const CreatePin = ({ user }) => {
   };
 
 
-  console.log(imageAsset?._id,'create-pin')
-  console.log(user?.user?._id)
+  // console.log(imageAsset?._id,'create-pin')
+  // console.log(user?.user?._id)
   const navigate = useNavigate();
 
   const savePin = () =>{

@@ -127,9 +127,9 @@ const Detail = ({user}) => {
       <h2 className='mt-5 font-bold text-2xl'> Comments</h2>
       <div className="max-h-270 overflow-y-auto">
 
-        {pinDetail && pinDetail?.comments?.map((comment,i)=>(
+        {pinDetail?.comments?.map((comment,i)=>(
           <div className='flex gap-2 mt-5 items-center bg-white rounded-lg'
-          key={i}>
+          key={comment.comment}>
             <img src={comment.postedBy?.imageUrl} alt="user-profile"
             className='w-10 h-10 rounded-full cursor-pointer' />
             <div className="flex flex-col ">

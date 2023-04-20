@@ -71,7 +71,7 @@ const UserProfile = () => {
     return <Spinner m={'Loading Profile'}/>
   }
 
-  console.log(user,'user-profile')
+  // console.log(user,'user-profile')
   return (
       <div className="relative pb-2 h-full justify-center items-center">
         <div className='flex flex-col pb-5'>
